@@ -1,0 +1,97 @@
+#right {
+    position: absolute;
+    top: 65%;
+    right: 10%;
+    width: 80px;
+    height: 100px;
+    margin-top: -200px;
+    margin-left: -100px;
+}
+.clockStyle {
+    font-weight: bold;
+    font-size:26px;
+}
+.clockStyle1 {
+    background-color:#fff;
+    border:#999 2px inset;
+    padding:6px;
+    color:#000;
+    font-family:"Arial Black", Gadget, sans-serif;
+    font-size:26px;
+    font-weight:bold;
+    letter-spacing: 2px;
+    position: fixed;
+    width: 150px;
+    height: 50px;
+    margin-right: 30px;
+    margin-left: 20px
+}
+
+.message{
+    background-size: 50px 50px;
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%,
+        transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+        transparent 75%, transparent);                                      
+    box-shadow: inset 0 -1px 0 rgba(255,255,255,.4);
+    width: 100%;
+    border: 1px solid;
+    color: #fff;
+    padding: 15px;
+    position: fixed;
+    _position: absolute;
+    text-shadow: 0 1px 0 rgba(0,0,0,.5);
+    animation: animate-bg 5s linear infinite;
+}
+
+.success{
+    background-color: #61b832;
+    border-color: #55a12c;
+}
+
+.restrictCopy{
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+}
+
+.message h3{
+    margin-left: 38%;                                              
+}
+
+.message p{
+    margin-left: 43%; 
+    color: #0b5b98;
+}
+
+@keyframes animate-bg {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -80px 0;
+    }
+}
+
+.buttonload {
+    background-color: #4CAF50; /* Green background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 12px 24px; /* Some padding */
+    font-size: 16px; /* Set a font-size */
+}
+
+/* Add a right margin to each icon */
+/*.fa {
+    margin-left: -12px;
+    margin-right: 8px;
+}*/
+
+body{
+    overflow-x: hidden;
+}
+
+.logout:hover {
+    color: white;
+}
