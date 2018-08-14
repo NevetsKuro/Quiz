@@ -48,6 +48,7 @@ public class adminController extends HttpServlet {
             request.setAttribute("globallist", globallist);
             con.close();
             Gson gson = new Gson();
+            response.setContentType("text/html; charset=UTF-8");
             gson.toJson(globallist,response.getWriter());
 
         } catch (SQLException ex) {

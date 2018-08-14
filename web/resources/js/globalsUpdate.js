@@ -123,6 +123,7 @@ $(document).ready(function () {
                 success: function (data) {
                     var tabData = data;
                     var counter = 1;
+                    qtnDatatable.clear();
                     $.each(tabData, function( key, value ) {
                         qtnDatatable.row.add([
                             counter,
@@ -142,7 +143,7 @@ $(document).ready(function () {
                 },
                 error:function (error){
                     $('#refresh').removeClass('fa-spin');
-                    console.log("Error");
+                    console.log(error);
                 }
            });
         });

@@ -1,4 +1,4 @@
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <%@include file="../UItemplate/header2.jsp" %>
     <body>

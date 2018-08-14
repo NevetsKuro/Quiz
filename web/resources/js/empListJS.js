@@ -51,7 +51,7 @@ $(document).ready(function(){
             dataType: 'JSON',
             success:function (data){
                 swal('Employee '+data+' role has been changed');
-                setTimeout(window.reload(),2000);
+                setTimeout(location.reload());
             },
             error: function (data) {
                 swal('Unsuccessfull!');

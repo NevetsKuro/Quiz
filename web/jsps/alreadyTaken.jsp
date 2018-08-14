@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <%@include file="../UItemplate/header2.jsp" %>
     <body style="background-image:url(resources/images/exam.jpg);color:black;padding:10px;box-shadow: 0px 2px 15px 0px black;">

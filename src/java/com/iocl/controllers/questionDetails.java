@@ -33,6 +33,7 @@ public class questionDetails extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 
+        request.setCharacterEncoding("UTF-8");
         Connection con = null;
         try {
             con = DatabaseConnectionFactory.createConnection();
@@ -53,7 +54,9 @@ public class questionDetails extends HttpServlet {
                 empQ.add(e);
             }
             con.close();
-            new Gson().toJson(empQ, response.getWriter());
+            response.setContentType("text/html; charset=UTF-8");
+            response.getWriter().print(new Gson().toJson(empQ));
+//            new Gson().toJson(empQ, response.getWriter());
             
         } catch (Exception e) {
             e.printStackTrace();

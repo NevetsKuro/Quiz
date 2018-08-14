@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <%@include file="../UItemplate/header2.jsp" %>
     <body>
@@ -14,7 +15,14 @@
                     <div class="col-lg-1" style="margin-top:25px;">
                     <button id="SendExcel" class="btn btn-success">Upload</button>
                     </div>
+                    <div class="col-lg-4">
+                        <label style="width: 100%;">Download Sample over Here</label>
+                        <a href="resources/excels/questionsUpload.xlsx" onclick="return true;"><button type="button" class="btn btn-info" style="">
+                            <span class="glyphicon glyphicon-download"></span>  Download
+                        </button></a>
+                    </div>
                 </div>
+                
             </form>
             <div class="row">
                 <div class="col-lg-offset-1 col-lg-10">

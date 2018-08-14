@@ -48,12 +48,17 @@
             </c:if>
             
             <c:if test="<%=valid2%>">
-                <div class="row text-center">
+                <!--<div class="row text-center">
                     <p style="font-size: 20px">:TEST COUNTDOWN:</p>
                     <span id="timeIs" data-seconds="${time_Remaining}" style="font-size: 32px"></span>
+                </div> -->
+                <div class="col-lg-offset-4 col-lg-5 row text-center" style="border-radius: 25px;background-image: linear-gradient(to right top, #e1e8f2, #e5ebf5, #e8eff8, #ecf2fc, #f0f6ff);box-shadow: 6px 5px 13px 3px black;opacity: 0.8;margin-bottom: 20px;">
+                    <p style="font-size: 20px;font-size: 34px;font-family: cursive;font-variant-caps:  unset;font-feature-settings:  normal;/* background-color: #d8d4c9; */color: tomato;">TEST COUNTDOWN</p>
+                    <span id="timeIs" data-seconds="${time_Remaining}" style="/* font-size: 32px; */color: #014b8c;FONT-STRETCH: unset;FONT-FAMILY: cursive;FONT-FAMILY:  cursive;FONT-SIZE: 49px;">21:05:17</span>
                 </div>
             </c:if>
             </c:if>
+                
             <c:if test="${ROLE == 'ADMIN'}">
                 <div class="text-center row" style="margin-top: 132px;padding: 19px;">
                     <a href="ResultController?url=Masters" class="btn1 button button-raised button-highlight button-pill hvr-icon-forward hvr-shadow animated fadeInUp" style="font-size: 24px;">Master
