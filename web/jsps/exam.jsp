@@ -154,6 +154,7 @@
     }
     </style>
     <body id="box" oncontextmenu="return false" style="width:99%">
+        <div class="restrictCopy" unselectable="on" onselectstart="return false;" onmousedown="return false;">
         <div id="loader" class="lds-css ng-scope" style="position: absolute;left: 40%;top: 40%;">
             <div style="width: 100%; height: 100%;" class="lds-pacman" id="divv">
                 <div><div></div><div></div><div></div></div><div><div></div><div></div></div>
@@ -215,5 +216,46 @@
                 </div>
             </div>
         <script src="resources/js/examJS.js" type="text/javascript"></script>
+        </div>
+        
+        <!--<div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+            
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <h4>All the best.</h4>
+                <button id="buts" class="buttons buttons-info">Click here</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <script>
+//            function requestFullScreen(element) {
+//                // Supports most browsers and their versions.
+//                    var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+//
+//                    if (requestMethod) { // Native full screen.
+//                        requestMethod.call(element);
+//                    } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+//                        var wscript = new ActiveXObject("WScript.Shell");
+//                        if (wscript !== null) {
+//                            wscript.SendKeys("{F11}");
+//                        }
+//                    }
+//                }
+//
+//                var elem = document.getElementById('box'); // Make the body go full screen.
+//                
+//                $('#myModal').modal('show');
+//                $(document).on('click','#buts',function() {
+//                    requestFullScreen(elem);
+//                    $('html').css('backgorundColor','white')
+//                    $('#myModal').modal('hide');
+//                });
+        </script>-->
     </body>
 </html>

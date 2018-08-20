@@ -44,6 +44,10 @@ public class ExamController extends HttpServlet {
             Statement st=con.createStatement();
 
             HttpSession session=request.getSession();
+            String mFlag = (String)request.getSession().getAttribute("mflag");
+            if(mFlag == "ON"){
+                request.getRequestDispatcher("jsps/error503.jsp").forward(request, response);
+            }
             User user = ((User)request.getSession().getAttribute("emp"));
             String empid = user.getUserid();
 

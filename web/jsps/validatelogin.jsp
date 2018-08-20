@@ -196,6 +196,11 @@
                             + "FROM CONTROL_TABLEU "
                             + "where PARAM = 'result_flag'";
 
+                    String sql14 = "SELECT P_VALUE "
+                            + "FROM CONTROL_TABLEU "
+                            + "where PARAM = 'Maintence_flag'";
+
+
                     PreparedStatement ps;
                     boolean isValidUser = false;
                     boolean hasPermission = false;
@@ -298,6 +303,14 @@
 
                         }
 
+                        String m_flag = "";
+                        ps = user.dbCon.prepareStatement(sql14);
+                        rs = ps.executeQuery();
+                        if (rs.next()) {
+                            m_flag = rs.getString("P_VALUE");
+                        }
+
+                        
                         session.setAttribute("start_time", time[0]);
                         session.setAttribute("end_time", time[1]);
                         session.setAttribute("quiz_time", qtime);
@@ -309,6 +322,7 @@
                         session.setAttribute("correct_ans_mark", correctAnsMark);
                         session.setAttribute("wrong_ans_mark", wrongAnsMark);
                         session.setAttribute("now_date", new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new Date()));
+                        session.setAttribute("mflag", m_flag);
                         long yetTime = 0;
                         
  //                       yetTime = TimeUtil.getTimeDiff( String.valueOf(new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new Date())),time[0], TimeUnit.SECONDS);
@@ -317,7 +331,11 @@
                         if(yetTime<0){
                             session.setAttribute("time_Remaining", Math.abs(yetTime)); //Time Remaining For the test to start
                         }
-                        
+
+                        if(m_flag.equals("ON")&&session.getAttribute("ROLE").toString().equals("USER")){
+                            RequestDispatcher rd = request.getRequestDispatcher("error503.jsp");
+                            rd.forward(request, response);
+                        }else if(m_flag.equals("OFF")||session.getAttribute("ROLE").toString().equals("ADMIN")){
                         if (isValidUser) {
 
                             if (TimeUtil.getDateDiff(time[1], TimeUnit.SECONDS) > 0 && !hasPermission) {
@@ -391,6 +409,7 @@
                                 rs.close();
                             }
                         }
+                        }   
                         rs.close();
                         user.dbCon.close();
                     } catch (Exception e) {
