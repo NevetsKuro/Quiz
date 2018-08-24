@@ -11,17 +11,14 @@ Features:
 5. Smooth transition
 
 <p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/CAPTURE1.PNG" width="850" title="admin">
+  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/Capture1.PNG" width="850" title="admin">
 </p>
 <p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/CAPTURE2.PNG" width="850" title="admin">
+  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/Capture2.PNG" width="850" title="admin">
 </p>
 <p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/CAPTURE3.PNG" width="850" title="admin">
+  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/Capture3.PNG" width="850" title="admin">
 </p>
 <p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/CAPTURE4.PNG" width="850" title="admin">
-</p>
-<p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/CAPTURE5.PNG" width="850" title="admin">
+  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/Capture4.PNG" width="850" title="admin">
 </p>
