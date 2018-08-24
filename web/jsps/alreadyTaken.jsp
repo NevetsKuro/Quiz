@@ -25,12 +25,21 @@
                         dataType:'json',
                         success:function (data){
                             var results = data;//JSON.parse(data);
-                            var html = "<table class='table table-bordered' style='background:aliceblue;'>"+
-                            "<tr><td>Highest Marks:</td><td>"+results.highest_marks+"</td></tr>"+
-                            "<tr><td>Your Marks:</td><td>"+results.marks+" Out Of "+results.total_marks+"</td></tr>"+
-                            "<tr><td>Time Taken to complete</td><td>"+results.timeTaken+" Seconds</td></tr>"+
-                            "</table>";
-                            $('#resultTab').html(html);
+                            if(results.marks){
+                                var html = "<table class='table table-bordered' style='background:aliceblue;'>"+
+                                "<tr><td>Highest Marks:</td><td>"+results.highest_marks+"</td></tr>"+
+                                "<tr><td>Your Marks:</td><td>"+results.marks+" Out Of "+results.total_marks+"</td></tr>"+
+                                "<tr><td>Time Taken to complete</td><td>"+results.timeTaken+" Seconds</td></tr>"+
+                                "</table>";
+                                $('#resultTab').html(html);
+                            }else{
+                                var html = "<table class='table table-bordered' style='background:aliceblue;'>"+
+                                "<tr><td>Highest Marks:</td><td>"+results.highest_marks+"</td></tr>"+
+                                "<tr><td>Your Marks:</td><td> 0 </td></tr>"+
+                                "<tr><td>Time Taken to complete</td><td>"+(results.timeTaken?results.timeTaken:0)+" Seconds</td></tr>"+
+                                "</table>";
+                                $('#resultTab').html(html);
+                            }
                         },
                         error:function (error){
                             console.log(error.responseText);

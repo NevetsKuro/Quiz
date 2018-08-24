@@ -6,9 +6,9 @@ $(document).ready(function () {
     var timer = new Timer();
     let totalTime = 0;
     totalTime = localStorage.getItem('timeTaken');
-    if(totalTime && totalTime!="0"){
-        quiz_time = parseInt(totalTime); 
-    }
+//    if(totalTime && totalTime!="0"){
+//        quiz_time = parseInt(totalTime); 
+//    }
     
     timer.start({
         countdown: true,
@@ -16,14 +16,14 @@ $(document).ready(function () {
     });
     timer.addEventListener('secondsUpdated', function (e) {
         $('#clockIt').html(timer.getTimeValues().toString());
-        var currentSeconds = parseInt(timer.getTotalTimeValues().seconds);
-        if (localStorage) {
-            // LocalStorage is supported!
-            localStorage.setItem('timeTaken', currentSeconds);
-        } else {
-            // No support. Use a fallback such as browser cookies or store on the server.
-            alert('Please use another browser');
-        }
+//        var currentSeconds = parseInt(timer.getTotalTimeValues().seconds);
+//        if (localStorage) {
+//            // LocalStorage is supported!
+//            localStorage.setItem('timeTaken', currentSeconds);
+//        } else {
+//            // No support. Use a fallback such as browser cookies or store on the server.
+//            alert('Please use another browser');
+//        }
     });
     timer.addEventListener('started', function (e) {
         $('#clockIt').html(timer.getTimeValues().toString());

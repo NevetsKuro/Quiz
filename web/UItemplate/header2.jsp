@@ -32,4 +32,12 @@
             </div>
         </div>
     </div>
+            <script type="text/javascript">
+                $(document).on('click','.logout',function() {
+                    if($('#saveIt').length){
+                        $('#saveIt').trigger('click');
+                    }
+                    window.open('logoutController',_self);
+                });
+            </script>
 </header>

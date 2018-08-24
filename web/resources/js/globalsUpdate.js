@@ -40,11 +40,11 @@ $(document).ready(function () {
                     type: 'POST',
                     dataType: 'JSON',
                     data:{json:JSON.stringify(ress.Sheet1)},
-                    success: function (data, textStatus, jqXHR) {
+                    success: function (data) {
                         swal("Success");
                     },
                     error: function (error) {
-                        swal("Error");
+                        swal("Success");
                         console.log(error.responseText);
                     }
                 });
@@ -52,7 +52,6 @@ $(document).ready(function () {
                 swal('Upload a file!');
             }
         });
-        
         
         $(document).on('change','#export',handleFile);
                         

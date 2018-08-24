@@ -239,13 +239,15 @@
 
                         ps = user.dbCon.prepareStatement(sql5);
                         rs = ps.executeQuery();
+                        String login_timestamp = "";
                         if (rs.next()) {
-                            String timeStamp = TimeUtil.convertToJSDate(rs.getString("LOGIN_TIMESTAMP"));
-                            if (TimeUtil.getTimeDiff(timeStamp, time[1], TimeUnit.SECONDS) > 0) {
+                            login_timestamp = TimeUtil.convertToJSDate(rs.getString("LOGIN_TIMESTAMP"));
+                            if (TimeUtil.getTimeDiff(login_timestamp, time[1], TimeUnit.SECONDS) > 0) {
                                 hasPermission = true;
                             }
+                            Long l = TimeUtil.getTimeDiff(login_timestamp, time[1], TimeUnit.SECONDS);
+                            System.out.println(l);
                         }
-
                         Long qtime = 0l;
 
                         ps = user.dbCon.prepareStatement(sql6);
@@ -313,7 +315,20 @@
                         
                         session.setAttribute("start_time", time[0]);
                         session.setAttribute("end_time", time[1]);
-                        session.setAttribute("quiz_time", qtime);
+                        if(login_timestamp!=""){
+                            Long l = new Long(TimeUtil.getTimeDiffS(login_timestamp, TimeUnit.SECONDS));
+                            Long q = qtime - l;
+                            if(q>0){
+                                session.setAttribute("quiz_time", q);
+                            }else{
+                                session.setAttribute("quiz_time", 0L);
+                            }
+                            System.out.println("used up time: "+TimeUtil.getTimeDiffS(login_timestamp, TimeUnit.SECONDS));
+                            System.out.println("quiz-Time:"+ q);
+                        }else{
+                            session.setAttribute("quiz_time", qtime);
+                            System.out.println("quiz-Time:"+qtime);
+                        }
                         session.setAttribute("quiz_no_of_questions", quizNoOfQuestions);
                         session.setAttribute("quiz_name", strQuizName);
                         session.setAttribute("total_no_questions", total_no_of_questions);
@@ -326,19 +341,16 @@
                         long yetTime = 0;
                         
  //                       yetTime = TimeUtil.getTimeDiff( String.valueOf(new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new Date())),time[0], TimeUnit.SECONDS);
-                        yetTime = TimeUtil.getDateDiff(time[0], TimeUnit.SECONDS);
-
-                        if(yetTime<0){
-                            session.setAttribute("time_Remaining", Math.abs(yetTime)); //Time Remaining For the test to start
-                        }
+                        
 
                         if(m_flag.equals("ON")&&session.getAttribute("ROLE").toString().equals("USER")){
                             RequestDispatcher rd = request.getRequestDispatcher("error503.jsp");
                             rd.forward(request, response);
                         }else if(m_flag.equals("OFF")||session.getAttribute("ROLE").toString().equals("ADMIN")){
                         if (isValidUser) {
-
-                            if (TimeUtil.getDateDiff(time[1], TimeUnit.SECONDS) > 0 && !hasPermission) {
+                            long diffE_N= TimeUtil.getDateDiff(time[1], TimeUnit.SECONDS);
+                            if ( diffE_N > 0 && !hasPermission) { // User enters pass end time
+                                System.out.println("User enters pass end time");
                                 ps = user.dbCon.prepareStatement(sql3);
                                 rs = ps.executeQuery();
                                 String status1 = "";
@@ -362,44 +374,58 @@
                                     rd.forward(request, response);
                                 }
 
-                            } else {
+                            } else { //if user enter during the exam dates/time
+                                System.out.println("User enter during the exam dates/time");
                                 ps = user.dbCon.prepareStatement(sql3);
                                 rs = ps.executeQuery();
                                 String end_time1 = ((String) request.getSession().getAttribute("end_time"));
-                                if (rs.next()) {
+                                if (rs.next()) { //has saved his results and logging in again
                                     String status = rs.getString("SUBMIT_STATUS");
                                     user.dbCon.close();
-
-                                    if (TimeUtil.getDateDiff(end_time1, TimeUnit.SECONDS) > 0) {
-                                        if (status.equals("Yes")) {
-                                            RequestDispatcher rd = request.getRequestDispatcher("alreadyTaken.jsp");
-                                            rd.forward(request, response);
-                                        } else if (status.equals("No")) {
-                                            RequestDispatcher rd = request.getRequestDispatcher("takenNotSubmitted.jsp");
-                                            rd.forward(request, response);
+                                    long diffL_N = TimeUtil.getDateDiff(login_timestamp, TimeUnit.SECONDS);
+                                    System.out.println("Time between login and current timestamp:");
+                                    System.out.println(diffL_N);
+                                    if(diffL_N < qtime){
+                                        if (TimeUtil.getDateDiff(end_time1, TimeUnit.SECONDS) > 0) {
+                                            if (status.equals("Yes")) {
+                                                RequestDispatcher rd = request.getRequestDispatcher("alreadyTaken.jsp");
+                                                rd.forward(request, response);
+                                            } else if (status.equals("No")) {
+                                                RequestDispatcher rd = request.getRequestDispatcher("takenNotSubmitted.jsp");
+                                                rd.forward(request, response);
+                                            } else {
+                                                RequestDispatcher rd = request.getRequestDispatcher("timeOver.jsp");
+                                                rd.forward(request, response);
+                                            }
                                         } else {
-                                            RequestDispatcher rd = request.getRequestDispatcher("timeOver.jsp");
-                                            rd.forward(request, response);
+                                            Long i = (Long)session.getAttribute("quiz_time");
+                                            if (status.equals("Yes")) {
+                                                RequestDispatcher rd = request.getRequestDispatcher("alreadyTaken.jsp");
+                                                rd.forward(request, response);
+                                            } else if(i>10){
+                                                System.out.println("instruction");
+                                                request.setAttribute("quizInstructions", initializeInstruction.getQuizInstructions());
+                                                RequestDispatcher rd = request.getRequestDispatcher("instructions.jsp");
+                                                rd.forward(request, response);
+                                            }else{
+                                                RequestDispatcher rd = request.getRequestDispatcher("timeOver.jsp");
+                                                rd.forward(request, response);
+                                            }
                                         }
-                                    } else {
-                                        if (status.equals("Yes")) {
-                                            RequestDispatcher rd = request.getRequestDispatcher("alreadyTaken.jsp");
-                                            rd.forward(request, response);
-                                        } else {
-                                            System.out.println("instruction");
-                                            request.setAttribute("quizInstructions", initializeInstruction.getQuizInstructions());
-                                            RequestDispatcher rd = request.getRequestDispatcher("instructions.jsp");
-                                            rd.forward(request, response);
-                                        }
-                                    }
-                                } else {
-                                    user.dbCon.close();
-                                    if (TimeUtil.getDateDiff(end_time1, TimeUnit.SECONDS) > 0) {
+                                    }else{
                                         RequestDispatcher rd = request.getRequestDispatcher("timeOver.jsp");
                                         rd.forward(request, response);
+                                    }
 
+                                } else {//logged in and started the test but has not saved his test
+                                    user.dbCon.close();
+//                                    long diffN_E = TimeUtil.getDateDiff(end_time1, TimeUnit.SECONDS);
+                                    Long i2 = (Long)session.getAttribute("quiz_time");
+                                   
+                                    if (i2 <= 0) {
+                                        RequestDispatcher rd = request.getRequestDispatcher("timeOver.jsp");
+                                        rd.forward(request, response);
                                     } else {
-                                        System.out.println("instruction");
                                         request.setAttribute("quizInstructions", initializeInstruction.getQuizInstructions());
                                         System.out.println("instruction set");
                                         RequestDispatcher rd = request.getRequestDispatcher("instructions.jsp");
