@@ -10,15 +10,33 @@ Features:
 4. Good graphic design
 5. Smooth transition
 
+<h3>Admin Pages:</h3>
 <p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/Capture1.PNG" width="850" title="admin">
+  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/Admin1.PNG" width="850" title="admin">
 </p>
 <p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/Capture2.PNG" width="850" title="admin">
+  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/Admin2.PNG" width="850" title="admin">
 </p>
 <p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/Capture3.PNG" width="850" title="admin">
+  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/Admin3.PNG" width="850" title="admin">
 </p>
 <p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/Capture4.PNG" width="850" title="admin">
+  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/Admin4.PNG" width="850" title="admin">
 </p>
+<h3>User Pages</h3>
+<p align="center">
+  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/User2.PNG" width="850" title="user">
+</p>
+<p align="center">
+  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/User3.PNG" width="850" title="user">
+</p>
+<p align="center">
+  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/User4.PNG" width="850" title="user">
+</p>
+<p align="center">
+  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/User5.PNG" width="850" title="user">
+</p>
+<p align="center">
+  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/User6.PNG" width="850" title="user">
+</p>
+
