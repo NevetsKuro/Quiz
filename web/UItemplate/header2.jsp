@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <header class="animated fadeInDown">
     <div class="row" style="background-color: #014B8C;padding: 10px;box-shadow: 0px 2px 15px 0px black;color: #dddddd!important">
-        <div class="col-lg-2" style="background: aliceblue;border-radius: 71px;width: 20%;margin: 13px;">
+        <div class="col-lg-2" style="background: aliceblue;border-radius: 29px;width: 19%;margin: 13px;text-align: center;font-style: italic;color: #014b8c">
             <!--<img src="resources/images/iocl.gif" alt="Indian Oil"/>-->
             <h4><strong>Quiz</strong></h4>
         </div>
