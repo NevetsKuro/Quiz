@@ -23,10 +23,7 @@ Features:
   <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/Admin3.PNG" width="850" title="admin">
 </p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp; - Uploading excel file on to the server.</p>
-<p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/Admin4.PNG" width="850" title="admin">
-</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; - Giving Rights to employees</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; - There even a page for giving Rights to an employees(ADMIN/USER)</p>
 <h3>User Pages</h3>
 <p align="center">
   <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/User2.PNG" width="850" title="user">
