@@ -1,9 +1,10 @@
 $(document).ready(function () {
-   
+        
         $(document).on('click','#mainBody > tbody > tr',function(){
             console.log('id: '+$(this).find('td:nth-child(3)').attr('id'));
             $('#currentValue').html($(this).find('td:nth-child(3)').html());  //store current value
             $('#param').html($(this).find('td:nth-child(2)').attr('data-name')); //store param
+            $('#newValue').val($(this).find('td:nth-child(3)').html());
             $('#valueModal').modal('show');
         });
         
@@ -16,10 +17,10 @@ $(document).ready(function () {
                 type:'POST',
                 dataType:'JSON',
                 success: function (data) {
-                    
+                    $('#refresh').trigger('click');
                 },
                 error:function(error){
-                    
+                    $('#refresh').trigger('click');
                 }
             });
         });
@@ -53,7 +54,7 @@ $(document).ready(function () {
             });
         });
         
-        function validation2() {
+        function validation2(name) {
             switch (name) {
                     case 'Site Link':
 
@@ -67,16 +68,16 @@ $(document).ready(function () {
                     case 'Start Date':
 
                         break;
-                    case 'End Date	':
+                    case 'End Date':
 
                         break;
-                    case 'Result Flag	':
+                    case 'Result Flag':
 
                         break;
                     case 'No of Questions(Quiz)	':
 
                         break;
-                    case 'Total Quiz Time	':
+                    case 'Total Quiz Time':
 
                         break;
                     case 'Quiz Name':
@@ -94,5 +95,5 @@ $(document).ready(function () {
                 }
                 return true;
         }
-        
+        $('#refresh').trigger('click');
 });

@@ -182,6 +182,11 @@
                 </table>
             </div>
         </div>
+        <div class="text-center row">
+            <a href="ResultController?url=Instructions" class="btn1 button button-raised button-highlight button-pill hvr-icon-forward hvr-shadow animated fadeInUp" style="font-size: 24px;">
+                <i class="fa fa-arrow-left"></i>  Back
+            </a>
+        </div>
         <script src="resources/js/empListJS.js" type="text/javascript"></script>
     </body>
 </html>

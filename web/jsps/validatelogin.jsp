@@ -341,7 +341,11 @@
                         long yetTime = 0;
                         
  //                       yetTime = TimeUtil.getTimeDiff( String.valueOf(new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new Date())),time[0], TimeUnit.SECONDS);
-                        
+                        yetTime = TimeUtil.getDateDiff(time[0], TimeUnit.SECONDS);
+
+                        if(yetTime<0){
+                            session.setAttribute("time_Remaining", Math.abs(yetTime)); //Time Remaining For the test to start
+                        }
 
                         if(m_flag.equals("ON")&&session.getAttribute("ROLE").toString().equals("USER")){
                             RequestDispatcher rd = request.getRequestDispatcher("error503.jsp");

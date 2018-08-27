@@ -44,6 +44,8 @@ public class ResultController extends HttpServlet {
             request.getRequestDispatcher("jsps/masters.jsp").forward(request, response);
         }else if(url.equalsIgnoreCase("empList")){
             request.getRequestDispatcher("jsps/empList.jsp").forward(request, response);
+        }else if(url.equalsIgnoreCase("Instructions")){
+            request.getRequestDispatcher("jsps/instructions.jsp").forward(request, response);
         }
     }
 }

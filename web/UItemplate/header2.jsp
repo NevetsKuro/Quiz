@@ -10,10 +10,11 @@
 <header class="animated fadeInDown">
     <div class="row" style="background-color: #014B8C;padding: 10px;box-shadow: 0px 2px 15px 0px black;color: #dddddd!important">
         <div class="col-lg-2" style="background: aliceblue;border-radius: 71px;width: 20%;margin: 13px;">
-            <img src="resources/images/iocl.gif" alt="Indian Oil"/>
+            <!--<img src="resources/images/iocl.gif" alt="Indian Oil"/>-->
+            <h4><strong>Quiz</strong></h4>
         </div>
 
-        <div class="col-sm-7 text-center">
+        <div class="col-sm-7 col-xs-4 text-center">
             <h3 style="padding-top: 12px;font-size: 48px;font-family: cursive;"> ${quiz_name} </h3>
         </div>
 
@@ -22,7 +23,7 @@
                 <label class="form-group">Name: </label> ${emp.name}
             </div>
             <div class="col-sm-2" style="font-size: 30px;" title="logout">
-                <a href="logoutController" class="logout"><i class="fa fa-sign-out"></i></a>
+                <span id="logout" style="cursor: pointer"><i class="fa fa-sign-out"></i></span>
             </div>
             <div class="col-sm-12">
                 <label class="form-group">Employee ID: </label> ${emp.userid}
@@ -33,11 +34,15 @@
         </div>
     </div>
             <script type="text/javascript">
-                $(document).on('click','.logout',function() {
+                $(document).on('click','#logout',function() {
                     if($('#saveIt').length){
                         $('#saveIt').trigger('click');
+                        console.log("trigger running");
                     }
-                    window.open('logoutController',_self);
+                    console.log("trigger runned");
+//                    window.location('logoutController');
+                    window.open('logoutController','_self');
+
                 });
             </script>
 </header>

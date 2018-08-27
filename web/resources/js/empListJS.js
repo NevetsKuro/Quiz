@@ -15,10 +15,8 @@ $(document).ready(function(){
             type: 'POST',
             dataType: 'JSON',
             success:function (data){
-                console.log(data);
                 var counter = 0;
                 $.each(data, function( key, value ) {
-                    console.log(value.emp_name);
 //                    if(counter<80){
                         EmpListDatatable.row.add([
                             counter+1,
@@ -27,7 +25,7 @@ $(document).ready(function(){
                             value.loc_code,
                             value.emp_design,
                             value.company_code,
-                            '<span data-code="'+value.emp_code+'" class="button button-primary button-pill button-small changeRole">'+value.role+'</span>'//buttons for updating and 
+                            '<span data-code="'+value.emp_code+'" class="button button-primary button-pill button-small changeRole"><i class="fa fa-exchange"></i>  '+value.role+'</span>'//buttons for updating and 
                         ]).draw(false);
                         counter++;
 //                    }

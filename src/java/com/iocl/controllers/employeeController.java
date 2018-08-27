@@ -107,6 +107,7 @@ public class employeeController extends HttpServlet {
                 if(role.equals("ADMIN")){
                     role = "USER";
                 }else if(role.equals("USER")){
+                    removeTestDetails(request,response,emp_code);
                     role = "ADMIN";
                 }
                 
@@ -128,5 +129,37 @@ public class employeeController extends HttpServlet {
 
             
         }
+    }
+
+    private void removeTestDetails(HttpServletRequest request, HttpServletResponse response, String emp_code) {
+        Connection con;
+        Statement st;
+        con=DatabaseConnectionFactory.createConnection();
+        try {        
+                st=con.createStatement();
+                
+                if(emp_code.length()>5){
+                    String sql6 = "Delete from logout_details where emp_code="+emp_code;
+                    String sql7 = "Delete from mst_result where emp_code="+emp_code;
+                    String sql8 = "Delete from ans_details where emp_code="+emp_code;
+                    String sql9 = "Delete from login_details where emp_code="+emp_code;
+
+                    st.execute(sql6);
+                    st.execute(sql7);
+                    st.execute(sql8);
+                    st.execute(sql9);
+                    System.out.println("Entry Deleted of "+emp_code);
+                }
+                
+                con.commit();
+                st.close();
+                con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }finally{
+                if (con != null) {
+                    try { con.close(); } catch (Exception e) {  } 
+                }
+            }
     }
 }
