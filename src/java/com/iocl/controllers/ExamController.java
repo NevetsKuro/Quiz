@@ -1,6 +1,5 @@
 package com.iocl.controllers;
 
-import com.google.gson.Gson;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -17,14 +16,15 @@ import javax.servlet.http.HttpSession;
 
 import com.iocl.quiz.DatabaseConnectionFactory;
 import com.iocl.quiz.QuizQuestion;
-import com.iocl.quiz.questions;
+import com.iocl.quiz.TimeUtil;
 import globals.User;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
+import javax.servlet.RequestDispatcher;
 
 @WebServlet("/exam")
 public class ExamController extends HttpServlet {
@@ -68,55 +68,60 @@ public class ExamController extends HttpServlet {
             }
             rset.close();
             
-            Boolean lock = check_ques_set(empid,st);//check if question set exist in database return true
-            String sql4 = "";
-             if(lock){
-                String exist = "";
-                exist = (String)request.getSession().getAttribute("randListSql");
-                if(exist==""||exist==null){
-                    sql4 = getQuesNoList(empid,st,request);
-                }else{
-                    sql4 = exist;
+            String end_time1 = ((String) request.getSession().getAttribute("end_time"));
+            
+            if(TimeUtil.getDateDiff(end_time1, TimeUnit.SECONDS) > 0){
+                request.getRequestDispatcher("jsps/timeOver.jsp").forward(request, response);
+            }else{
+                Boolean lock = check_ques_set(empid,st);//check if question set exist in database return true
+                String sql4 = "";
+                 if(lock){
+                    String exist = "";
+                    exist = (String)request.getSession().getAttribute("randListSql");
+                    if(exist==""||exist==null){
+                        sql4 = getQuesNoList(empid,st,request);
+                    }else{
+                        sql4 = exist;
+                    }    
                 }
-                
+                else{
+                    //generate a random number list
+                    sql4 = generateRandomQuestionList(request,empid);
+                    String sql = "Update login_details set QUES_LOCK=1 where emp_code="+empid;
+                    st.executeUpdate(sql);
+                }
+
+                ResultSet rs_qlist_details = st.executeQuery(sql4);
+                QuizQuestion question;
+                ArrayList<QuizQuestion> questions = new ArrayList<QuizQuestion>();
+                ArrayList<String> options = new ArrayList<String>();
+                while(rs_qlist_details.next()){
+
+                    question =  new QuizQuestion();
+                    questions.add(question);
+                    question.setQuestionNumber(rs_qlist_details.getInt("QUSE_ID"));
+                    question.setQuestion(rs_qlist_details.getString("QUES_DESC"));
+                    question.setCorrectOptionIndex(rs_qlist_details.getInt("CORRECT_OP"));
+                    options = new ArrayList<String>();
+                    options.add(rs_qlist_details.getString("OPTION1"));
+                    options.add(rs_qlist_details.getString("OPTION2"));
+                    options.add(rs_qlist_details.getString("OPTION3"));
+                    options.add(rs_qlist_details.getString("OPTION4"));
+                    question.setQuestionOptions(options);
+                }
+
+                Collections.sort(questions, COMPARATOR);
+    //            for (QuizQuestion ques : questions){
+    //                System.out.println("After sorting on price: " + ques.getQuestionNumber());
+    //            }
+
+                session.setAttribute("ques_list_details", questions); //list of all question with details
+    //            Gson gson = new Gson().toJson(questions, response.getWriter());
+    //            String quiztime = (String)request.getSession().getAttribute("quest");
+    //            new Gson().toJson(quiztime,response.getWriter());
+                con.close();
+                request.getRequestDispatcher("jsps/exam.jsp").forward(request,response);
             }
-            else{
-                //generate a random number list
-                sql4 = generateRandomQuestionList(request,empid);
-                String sql = "Update login_details set QUES_LOCK=1 where emp_code="+empid;
-                st.executeUpdate(sql);
-            }
-            
-            ResultSet rs_qlist_details = st.executeQuery(sql4);
-            QuizQuestion question;
-            ArrayList<QuizQuestion> questions = new ArrayList<QuizQuestion>();
-            ArrayList<String> options = new ArrayList<String>();
-            while(rs_qlist_details.next()){
-                
-                question =  new QuizQuestion();
-                questions.add(question);
-                question.setQuestionNumber(rs_qlist_details.getInt("QUSE_ID"));
-                question.setQuestion(rs_qlist_details.getString("QUES_DESC"));
-                question.setCorrectOptionIndex(rs_qlist_details.getInt("CORRECT_OP"));
-                options = new ArrayList<String>();
-                options.add(rs_qlist_details.getString("OPTION1"));
-                options.add(rs_qlist_details.getString("OPTION2"));
-                options.add(rs_qlist_details.getString("OPTION3"));
-                options.add(rs_qlist_details.getString("OPTION4"));
-                question.setQuestionOptions(options);
-            }
-            
-            Collections.sort(questions, COMPARATOR);
-//            for (QuizQuestion ques : questions){
-//                System.out.println("After sorting on price: " + ques.getQuestionNumber());
-//            }
-        
-            session.setAttribute("ques_list_details", questions); //list of all question with details
-//            Gson gson = new Gson().toJson(questions, response.getWriter());
-//            String quiztime = (String)request.getSession().getAttribute("quest");
-//            new Gson().toJson(quiztime,response.getWriter());
-            con.close();
-            request.getRequestDispatcher("jsps/exam.jsp").forward(request,response);
 
         }catch(Exception e){
             e.printStackTrace();

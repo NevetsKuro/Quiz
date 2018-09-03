@@ -200,6 +200,7 @@ $(document).ready(function () {
           });
     });
     
-    
-    
+    $(document).on('click', '#nextIt', function () {
+        
+    });
 });

@@ -140,6 +140,10 @@ public class SaveAndFinishController extends HttpServlet {
                    // marks++;
                     marks = marks+icorrect_ans_mark;
                 }
+                else if(Integer.parseInt(qlist.get(i).getQuesAns()) == 0)
+                {
+                    marks = marks;
+                }
                 else
                 {
                     marks = marks-iwrong_ans_mark;

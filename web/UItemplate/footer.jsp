@@ -47,4 +47,11 @@
     <script src="resources/js/xlsx.core.min.js" type="text/javascript"></script>
     <!--<script src='http://oss.sheetjs.com/js-xlsx/xlsx.full.min.js'></script>-->
     <script src="resources/js/xlsx.full.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js" type="text/javascript"></script>
+    
+    
 </head>

@@ -7,17 +7,18 @@ package com.iocl.controllers;
 
 import com.google.gson.Gson;
 import com.iocl.quiz.DatabaseConnectionFactory;
-import globals.User;
+import com.iocl.quiz.EmpResult2;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashMap;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -46,6 +47,44 @@ public class ResultController extends HttpServlet {
             request.getRequestDispatcher("jsps/empList.jsp").forward(request, response);
         }else if(url.equalsIgnoreCase("Instructions")){
             request.getRequestDispatcher("jsps/instructions.jsp").forward(request, response);
+        }else if(url.equalsIgnoreCase("downloadExcel")){
+            ArrayList<EmpResult2> empRList = new ArrayList<EmpResult2>();
+            empRList = downloadExcel(request,response);
+            new Gson().toJson(empRList, response.getWriter());
         }
+    }
+
+    private ArrayList<EmpResult2> downloadExcel(HttpServletRequest request, HttpServletResponse response) {
+        Statement st = null;
+        PreparedStatement ps = null;
+        Connection con = DatabaseConnectionFactory.createConnection();
+        ResultSet rs = null;
+        ArrayList<EmpResult2> empRList2 = new ArrayList<EmpResult2>();
+        
+        con = DatabaseConnectionFactory.createConnection();
+        String query = "select m.emp_name, m.loc_code, r.marks, r.time_duration from mst_result r inner join emp_master m on m.emp_code = r.emp_code order by marks desc,TIME_DURATION asc";
+        try{
+            st=con.createStatement();
+            rs = st.executeQuery(query);
+            
+            while(rs.next()){
+                EmpResult2 emps= new EmpResult2();
+                emps.setEmp_name(rs.getString(1));
+                emps.setLoc_code(rs.getString(2));
+                emps.setMarks(String.valueOf(rs.getInt(3)));
+                emps.setDuration(String.valueOf(rs.getInt(4)));
+                empRList2.add(emps);
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            if (con != null) {
+                try { con.close(); } catch (Exception e) {  } 
+            }
+        }
+        return empRList2;
     }
 }

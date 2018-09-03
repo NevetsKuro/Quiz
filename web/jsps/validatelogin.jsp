@@ -353,6 +353,11 @@
                         }else if(m_flag.equals("OFF")||session.getAttribute("ROLE").toString().equals("ADMIN")){
                         if (isValidUser) {
                             long diffE_N= TimeUtil.getDateDiff(time[1], TimeUnit.SECONDS);
+                            if(session.getAttribute("ROLE").toString().equals("ADMIN")){
+                                request.setAttribute("quizInstructions", initializeInstruction.getQuizInstructions());
+                                RequestDispatcher rd = request.getRequestDispatcher("instructions.jsp");
+                                rd.forward(request, response);
+                            }else{
                             if ( diffE_N > 0 && !hasPermission) { // User enters pass end time
                                 System.out.println("User enters pass end time");
                                 ps = user.dbCon.prepareStatement(sql3);
@@ -438,6 +443,7 @@
                                 }
                                 rs.close();
                             }
+                            }  
                         }
                         }   
                         rs.close();

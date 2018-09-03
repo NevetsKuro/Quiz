@@ -207,8 +207,11 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <input type="button" class="btn btn-primary" id="saveIt" name="action" value="Save"/>
                             &nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="button" id="submitIt" class="btn btn-primary" name="action" value="Submit"/>
+                            <input type="button" id="nextIt" class="btn btn-primary" name="action" value="Next"/>
                         </div>
+                    </div>
+                    <div class="row" style="float: right;margin: 34px">
+                        <input type="button" id="submitIt" class="btn btn-primary" name="action" value="Submit Test"/>
                     </div>
                 </div>
                 <div id="summary" class="col-lg-4" style="margin-top: 64px;border: 1px dotted;height: 390px;scroll-behavior: smooth;background-color: #f9f9f9"><!-- summary -->
