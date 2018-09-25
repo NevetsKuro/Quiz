@@ -7,7 +7,7 @@
             <div class="col-lg-12 text-center">
                 <h3 style="margin-top: 144px;font-size: 32px;">Congrats, you have successfully taken the QUIZ!</h3>
                 <p>All the best for the result.</p>
-                
+                <div><a href="ResultController?url=feedback"><button class="button button-action button-glow">Give Feedback</button></a></div>
             </div>
         </div>
         <c:if test="${result_flag == 'ON'}">

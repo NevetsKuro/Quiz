@@ -118,6 +118,10 @@
         <servlet-name>employeeController</servlet-name>
         <servlet-class>com.iocl.controllers.employeeController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FeedbackController</servlet-name>
+        <servlet-class>com.iocl.controllers.FeedbackController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserLogged</servlet-name>
         <url-pattern>/UserLogged</url-pattern>
@@ -157,6 +161,10 @@
     <servlet-mapping>
         <servlet-name>employeeController</servlet-name>
         <url-pattern>/employeeController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FeedbackController</servlet-name>
+        <url-pattern>/FeedbackController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

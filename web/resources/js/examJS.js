@@ -9,6 +9,7 @@ $(document).ready(function () {
 //    if(totalTime && totalTime!="0"){
 //        quiz_time = parseInt(totalTime); 
 //    }
+    var examDatatable;
     
     timer.start({
         countdown: true,
@@ -81,7 +82,7 @@ $(document).ready(function () {
                 });                
             }
             populate(data);
-            var examDatatable = $('#QuesTable').DataTable({
+            examDatatable = $('#QuesTable').DataTable({
                 "pageLength":1,
                 "lengthChange": false,
                 "ordering": false,
@@ -174,7 +175,7 @@ $(document).ready(function () {
             dataType:'JSON',
             data:{json:JSON.stringify(quesArr)},
             success:function(data){
-                swal('Your answers are saved!!')
+                swal('Your answers are saved!!');
             },
             error:function(error){
                 console.log(error.responseText);
@@ -187,7 +188,7 @@ $(document).ready(function () {
         console.log('Submitting...');
         //table.rows().nodes().page.len(-1).draw(false); // This is needed
         swal({
-            title: "Are you sure you want to Submit?",
+            title: "Are you sure you want to Submit this Test?",
             icon: "warning",
             buttons: true,
             dangerMode: true
@@ -201,6 +202,7 @@ $(document).ready(function () {
     });
     
     $(document).on('click', '#nextIt', function () {
-        
+        examDatatable.page('next').draw(false);
     });
+    
 });

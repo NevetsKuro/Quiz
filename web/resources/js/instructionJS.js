@@ -17,9 +17,14 @@ $(document).ready(function(){
         }else if(b<=23){
             $('#timeIs').html(timer.getTimeValues().toString());
         }
+        $('#timeR').removeClass('hide');
     });
     timer.addEventListener('targetAchieved', function (e) {
         location.reload();
+    });
+    
+    $(document).on('click', '#linkTo', function () {
+        window.open('jsps/showExcel.jsp','_blank');
     });
 });
 

@@ -96,7 +96,7 @@
                 <form>
                     <div class="form-group">
                         <label for="newValue">Current Value for <span id="param"></span> is:<span id="currentValue"> - - </span></label>
-                    <input id="newValue" type="text" class="form-control" placeholder="Enter a new value">
+                    <input id="newValue" type="text" class="form-control" placeholder="Enter a new value" autofocus>
                 </form>
             </div>
             <div class="modal-footer">

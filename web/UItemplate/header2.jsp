@@ -41,10 +41,8 @@
                         $('#saveIt').trigger('click');
                         console.log("trigger running");
                     }
+                    setTimeout(window.open('logoutController','_self'),2000);
                     console.log("trigger runned");
-//                    window.location('logoutController');
-                    window.open('logoutController','_self');
-
                 });
             </script>
 </header>

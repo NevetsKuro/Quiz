@@ -19,6 +19,8 @@
                         ${quizInstruction.insID}. ${quizInstruction.insDesc}
                     </span>
                 </c:forEach>
+                <span style="font-size: 20px;font-weight: 800;font-family: serif;margin-bottom: 34px;">10. User Manuel(while attempting the test)</span>
+                <span><a href="http://10.147.69.98:8081/CustomQuiz/resources/excels/QuizTestInfoPdf.pdf" target="_blank" style="cursor: pointer;" >Click here to View Manuel</a></span>
             </div>
             <%! boolean valid = false; %>
             <%! boolean valid2 = true; %>
@@ -43,7 +45,7 @@
             %>
             <c:if test="<%=valid%>">
                 <div class="row text-center">
-                    <a href="/CustomQuiz/exam" class="button button-raised button-primary"><i class="fa fa-thumbs-up"></i> Take Test</a>
+                    <a id="butsss" href="/CustomQuiz/exam" class="button button-raised button-primary"><i class="fa fa-thumbs-up"></i> Take Test</a>
                 </div>
             </c:if>
             
@@ -52,7 +54,7 @@
                     <p style="font-size: 20px">:TEST COUNTDOWN:</p>
                     <span id="timeIs" data-seconds="${time_Remaining}" style="font-size: 32px"></span>
                 </div> -->
-                <div class="col-lg-offset-4 col-lg-5 row text-center" style="border-radius: 25px;background-image: linear-gradient(to right top, #e1e8f2, #e5ebf5, #e8eff8, #ecf2fc, #f0f6ff);box-shadow: 6px 5px 13px 3px black;opacity: 0.8;margin-bottom: 20px;">
+                <div id="timeR" class="col-lg-offset-4 col-lg-5 row text-center hide" style="border-radius: 25px;background-image: linear-gradient(to right top, #e1e8f2, #e5ebf5, #e8eff8, #ecf2fc, #f0f6ff);box-shadow: 6px 5px 13px 3px black;opacity: 0.8;margin-bottom: 20px;">
                     <p style="font-size: 20px;font-size: 34px;font-family: cursive;font-variant-caps:  unset;font-feature-settings:  normal;/* background-color: #d8d4c9; */color: tomato;">TEST COUNTDOWN</p>
                     <span id="timeIs" data-seconds="${time_Remaining}" style="/* font-size: 32px; */color: #014b8c;FONT-STRETCH: unset;FONT-FAMILY: cursive;FONT-FAMILY:  cursive;FONT-SIZE: 49px;">21:05:17</span>
                 </div>

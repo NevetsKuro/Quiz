@@ -6,6 +6,7 @@ $(document).ready(function () {
             $('#param').html($(this).find('td:nth-child(2)').attr('data-name')); //store param
             $('#newValue').val($(this).find('td:nth-child(3)').html());
             $('#valueModal').modal('show');
+            $('#newValue').focus();
         });
         
         $(document).on('click','#submitGlobal',function (){
@@ -14,8 +15,10 @@ $(document).ready(function () {
             
             $.ajax({
                 url:'adminController?name='+name+'&newValue='+newValue,
+//                url:'adminController',
                 type:'POST',
-                dataType:'JSON',
+//                data:{name:name,newValue:newValue},
+                contentType:"application/json; charset=utf-8",
                 success: function (data) {
                     $('#refresh').trigger('click');
                 },
@@ -54,46 +57,76 @@ $(document).ready(function () {
             });
         });
         
-        function validation2(name) {
-            switch (name) {
-                    case 'Site Link':
-
-                        break;
-                    case 'Correct answer(Marks)':
-
-                        break;
-                    case 'Wrong Answer(Marks)':
-
-                        break;
-                    case 'Start Date':
-
-                        break;
-                    case 'End Date':
-
-                        break;
-                    case 'Result Flag':
-
-                        break;
-                    case 'No of Questions(Quiz)	':
-
-                        break;
-                    case 'Total Quiz Time':
-
-                        break;
-                    case 'Quiz Name':
-
-                        break;
-                    case 'Total No of questions':
-
-                        break;
-                    case 'Random Flag':
-
-                        break;
-                    default:
-
-                        break;
-                }
-                return true;
-        }
+        $(document).on('change', '#newValue', function () {
+            var value = $('currentValue').val();
+            var str = $(this).val();
+            var par = $("#param").html();
+            switch (par) {
+                case "Site_Link ":
+                    if(str.indexOf("http://10.146.65.10/")<0){
+                        swal("Please prepend the following String :-http://10.146.65.10/");
+                        $(this).val("http://10.146.65.10/");
+                        $('#submitGlobal').attr('disabled',true);
+                    }
+                    break;    
+                case "correct_ans_mark":
+                    if(parseInt(str) < 0){
+                        swal("Correct Marks cannot be less than Zero");
+                        $(this).val("");
+                        $('#submitGlobal').attr('disabled',true);
+                    }
+                    break;
+                case "wrong_ans_mark":
+                    if(parseInt($('#cAns').val()) > parseInt(str)){
+                        swal("Correct Marks cannot be less than Zero");
+                        $(this).val("");
+                        $('#submitGlobal').attr('disabled',true);
+                    }
+                    break;
+                case "result_flag":
+                    if(str == "ON"||str == "OFF"){
+                        //do nothing
+                    }else{
+                        swal("Incorrect Value.(Should be ON or OFF)");
+                        $(this).val("");
+                        $('#submitGlobal').attr('disabled',true);
+                    }
+                    break;
+                case "random_flag":
+                    if(str == "ON"||str == "OFF"){
+                        //do nothing
+                    }else{
+                        swal("Incorrect Value.(Should be ON or OFF)");
+                        $(this).val("");
+                        $('#submitGlobal').attr('disabled',true);
+                    }
+                    break;
+                case "quiz_time":
+                    if(parseInt(str) <= 0){
+                        swal("Time cannot be less than or equal to zero!");
+                        $(this).val("");
+                        $('#submitGlobal').attr('disabled',true);
+                    }
+                    break;
+                case "quiz_no_questions":
+                    if(parseInt(str) >= parseInt($('#totsNoQues').html())){
+                        swal("Quiz's number of question should be less than Total question mentioned!");
+                        $(this).val("");
+                        $('#submitGlobal').attr('disabled',true);
+                    }
+                    break;
+            }
+            if($(this).val() != ""){
+                $('#submitGlobal').attr('disabled',false);
+            }
+        });
+        
+        $(document).on('click','#mainBody > tbody > tr:nth-child(7)',function (e) {
+            e.preventDefault();
+            
+        });
+        
+        
+        
         $('#refresh').trigger('click');
 });

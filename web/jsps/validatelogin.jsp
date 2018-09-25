@@ -315,6 +315,7 @@
                         
                         session.setAttribute("start_time", time[0]);
                         session.setAttribute("end_time", time[1]);
+                        
                         if(login_timestamp!=""){
                             Long l = new Long(TimeUtil.getTimeDiffS(login_timestamp, TimeUnit.SECONDS));
                             Long q = qtime - l;
@@ -338,6 +339,10 @@
                         session.setAttribute("wrong_ans_mark", wrongAnsMark);
                         session.setAttribute("now_date", new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new Date()));
                         session.setAttribute("mflag", m_flag);
+                        session.setAttribute("tQuizTime", qtime);
+                        session.setAttribute("login_timestamp", login_timestamp);
+                        
+                        //Time remaining For the quiz test to start
                         long yetTime = 0;
                         
  //                       yetTime = TimeUtil.getTimeDiff( String.valueOf(new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new Date())),time[0], TimeUnit.SECONDS);

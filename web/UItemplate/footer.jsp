@@ -29,6 +29,9 @@
     <link href="resources/Libraries/Hover-master/css/hover.css" rel="stylesheet" type="text/css"/>
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">-->
     <link href="resources/css/animate.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/shepherd/1.8.1/css/shepherd-theme-default.css" rel="stylesheet"/>
+    <link href="resources/css/shepherd-theme-arrows.css" rel="stylesheet" type="text/css"/>
+    <link href="resources/css/pure-css.css" rel="stylesheet" type="text/css"/>
     
     <script src="resources/js/jquery-2.2.3.js" type="text/javascript"></script>
     <script src="resources/js/easytimer.js" type="text/javascript"></script>
@@ -52,6 +55,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js" type="text/javascript"></script>
-    
-    
+    <script src="resources/js/popper.js" type="text/javascript"></script>
+    <script src="resources/js/shepherd.js" type="text/javascript"></script>
 </head>

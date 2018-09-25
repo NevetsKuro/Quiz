@@ -4,6 +4,7 @@ package com.iocl.quiz;
 public class EmpResult2 {
 
     String emp_name;
+    String emp_code;
     String loc_code;
     String marks;
     String duration;
@@ -12,11 +13,20 @@ public class EmpResult2 {
     
     }
 
-    public EmpResult2(String emp_name, String loc_code, String marks, String duration) {
+    public EmpResult2(String emp_name,String emp_code , String loc_code, String marks, String duration) {
         this.emp_name = emp_name;
+        this.emp_code = emp_code;
         this.loc_code = loc_code;
         this.marks = marks;
         this.duration = duration;
+    }
+
+    public String getEmp_code() {
+        return emp_code;
+    }
+
+    public void setEmp_code(String emp_code) {
+        this.emp_code = emp_code;
     }
 
     public String getEmp_name() {

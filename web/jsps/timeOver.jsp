@@ -6,6 +6,7 @@
             <div class="col-lg-12 text-center">
                 <h3 style="margin-top: 144px;font-size: 32px;">Sorry, the time is over!</h3>
                 <p>Better luck next time.</p>
+                <div><a href="ResultController?url=feedback"><button class="button button-action button-glow">Give Feedback</button></a></div>
             </div>
         </div>
         <c:if test="${result_flag == 'ON'}">

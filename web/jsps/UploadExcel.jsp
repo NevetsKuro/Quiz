@@ -52,7 +52,7 @@
             </div>
             
             <div class="text-center row">
-                <a href="ResultController?url=Instructions" class="btn1 button button-raised button-highlight button-pill hvr-icon-forward hvr-shadow animated fadeInUp" style="font-size: 24px;">  
+                <a href="ResultController?url=Instructions" class="btn1 button button-raised button-highlight button-pill hvr-icon-forward hvr-shadow animated fadeInUp" style="font-size: 24px;margin-bottom: 30px;">  
                     <i class="fa fa-arrow-left"></i>  Back
                 </a>
             </div>

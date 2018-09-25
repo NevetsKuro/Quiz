@@ -50,7 +50,24 @@ public class ExamController extends HttpServlet {
             }
             User user = ((User)request.getSession().getAttribute("emp"));
             String empid = user.getUserid();
+            String sql5 = "SELECT * "
+                            + "FROM LOGIN_DETAILS "
+                            + "where "
+                            + "lpad(emp_code,8,0)=lpad('" + user.getPfnumber() + "',8,0)";
+            ResultSet rss = st.executeQuery(sql5);
+            String login_timestamp = "";
+            if (rss.next()) {
+                login_timestamp = TimeUtil.convertToJSDate(rss.getString("LOGIN_TIMESTAMP"));
+            }
+            if(!login_timestamp.equals("")){
+                Long l = new Long(TimeUtil.getTimeDiffS(login_timestamp, TimeUnit.SECONDS));
+                Long q = (Long)session.getAttribute("tQuizTime") - l;
+                session.setAttribute("quiz_time",q);
+            }else{
+                //do nothing
+            }
 
+            
             checkLoginTimestamp(st, empid, request); // punching time stamp
             
             String query = "SELECT * FROM mst_result where emp_code = '"+empid+"'";

@@ -5,7 +5,7 @@
         <div id="main" class="row" style="font-style: oblique;font-family: serif;font-size: xx-large">
             <div class="col-lg-12 text-center">
                 <h3 style="margin-top: 144px;font-size: 32px;">The Time is Up!</h3>
-                <p>Check your result below.</p>
+                <div><a href="ResultController?url=feedback"><button class="button button-action button-glow">Give Feedback</button></a></div>
             </div>
         </div>
         <c:if test="${result_flag == 'ON'}">

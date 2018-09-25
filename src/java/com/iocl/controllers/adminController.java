@@ -17,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import oracle.jdbc.OraclePreparedStatement;
 
 public class adminController extends HttpServlet {
 
@@ -66,14 +67,26 @@ public class adminController extends HttpServlet {
             throws ServletException, IOException {
         con = DatabaseConnectionFactory.createConnection();
         try {
-            st = con.createStatement();
+            
             
             String name = request.getParameter("name");
             String newValue = request.getParameter("newValue");
               
-            String sql = "UPDATE CONTROL_TABLEU set p_value='"+newValue+"' where param='"+name+"'";
-            st.executeUpdate(sql);
+            if(name.equals("quiz_name")){
+                String sql2 = "UPDATE CONTROL_TABLEU set p_value=? where param='"+name+"'";
+                PreparedStatement pstmt = con.prepareStatement(sql2);
+                ((OraclePreparedStatement) pstmt).setFormOfUse(1, OraclePreparedStatement.FORM_NCHAR);
+                pstmt.setString(1, newValue);
+//                ((OraclePreparedStatement) pstmt).setFormOfUse(1, OraclePreparedStatement.FORM_NCHAR);
+//                pstmt.setString(1, newValue);
+                pstmt.executeUpdate();
+            }else{
+                st = con.createStatement();
+                String sql = "UPDATE CONTROL_TABLEU set p_value='"+newValue+"' where param='"+name+"'";
+                st.executeUpdate(sql);
+            }
             con.close();           
+            response.setContentType("text/html; charset=UTF-8");
             
         } catch (Exception ex) {
             ex.printStackTrace();

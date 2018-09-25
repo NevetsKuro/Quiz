@@ -47,6 +47,8 @@ public class ResultController extends HttpServlet {
             request.getRequestDispatcher("jsps/empList.jsp").forward(request, response);
         }else if(url.equalsIgnoreCase("Instructions")){
             request.getRequestDispatcher("jsps/instructions.jsp").forward(request, response);
+        }else if(url.equalsIgnoreCase("feedback")){
+            request.getRequestDispatcher("jsps/Feedback.jsp").forward(request, response);
         }else if(url.equalsIgnoreCase("downloadExcel")){
             ArrayList<EmpResult2> empRList = new ArrayList<EmpResult2>();
             empRList = downloadExcel(request,response);
@@ -62,7 +64,7 @@ public class ResultController extends HttpServlet {
         ArrayList<EmpResult2> empRList2 = new ArrayList<EmpResult2>();
         
         con = DatabaseConnectionFactory.createConnection();
-        String query = "select m.emp_name, m.loc_code, r.marks, r.time_duration from mst_result r inner join emp_master m on m.emp_code = r.emp_code order by marks desc,TIME_DURATION asc";
+        String query = "select m.emp_name, m.emp_code, m.loc_code, r.marks, r.time_duration from mst_result r inner join emp_master m on m.emp_code = r.emp_code order by marks desc,TIME_DURATION asc";
         try{
             st=con.createStatement();
             rs = st.executeQuery(query);
@@ -70,9 +72,10 @@ public class ResultController extends HttpServlet {
             while(rs.next()){
                 EmpResult2 emps= new EmpResult2();
                 emps.setEmp_name(rs.getString(1));
-                emps.setLoc_code(rs.getString(2));
-                emps.setMarks(String.valueOf(rs.getInt(3)));
-                emps.setDuration(String.valueOf(rs.getInt(4)));
+                emps.setEmp_code(rs.getString(2));
+                emps.setLoc_code(rs.getString(3));
+                emps.setMarks(String.valueOf(rs.getInt(4)));
+                emps.setDuration(String.valueOf(rs.getInt(5)));
                 empRList2.add(emps);
             }
             

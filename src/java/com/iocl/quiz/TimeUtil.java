@@ -93,6 +93,20 @@ public class TimeUtil {
         long diffInMillies = date1.getTime() - date2.getTime();
         return (diffInMillies / 1000 );
     }
+    public static long getTimeDiffS2(String dateTime, TimeUnit timeUnit) {
+        Date date1 = new Date();
+        System.out.println("datetime"+dateTime);
+        String dt = dateTime.split(" ")[0] + "/" + dateTime.split(" ")[1].replace(",", "") + "/" + dateTime.split(" ")[2] + " " + dateTime.split(" ")[3];
+        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        Date date2 = null;
+        try {
+            date2 = format.parse(dt);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        long diffInMillies = date1.getTime() - date2.getTime();
+        return (diffInMillies / 1000 );
+    }
 
     public static <T, E> T getKeyByValue(Map<T, E> map, E value) {
         for (Map.Entry<T, E> entry : map.entrySet()) {

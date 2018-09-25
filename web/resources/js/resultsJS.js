@@ -49,8 +49,9 @@ $(document).ready(function (){
                 Result2Datatable.clear();
                 $.each(data, function( key, value ) {
                     Result2Datatable.row.add([
-                        "#"+counter,
+                        counter,
                         value.emp_name,
+                        value.emp_code,
                         value.loc_code,
                         value.marks,
                         value.duration

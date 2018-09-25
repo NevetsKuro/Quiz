@@ -48,6 +48,10 @@ public class questionExcelList extends HttpServlet {
                 String sql1 = "DELETE FROM QUESTION_MASTERU";
                 st.execute(sql1);
                 
+                int totalQuestion = qtnExcelList.size();
+                String sqln = "update control_tableu set p_value = "+totalQuestion+" where param = 'total_no_questions'";
+                st.execute(sqln);
+                
 //                for (questionExcelModel qtnList : qtnExcelList) {
 //                    String sql = "Select MAX(QUSE_ID) from QUESTION_MASTERU";
 //                    ResultSet rs = st.executeQuery(sql);
