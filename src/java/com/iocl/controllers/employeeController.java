@@ -63,6 +63,7 @@ public class employeeController extends HttpServlet {
                 con.close();
             } catch (Exception e) {
                 e.printStackTrace();
+                response.getWriter().println(e.getMessage());
             }finally{
                 if (con != null) {
                     try { con.close(); } catch (Exception e) {  } 
@@ -91,6 +92,7 @@ public class employeeController extends HttpServlet {
                 con.close();
             } catch (Exception e) {
                 e.printStackTrace();
+                response.getWriter().println(e.getMessage());
             }finally{
                 if (con != null) {
                     try { con.close(); } catch (Exception e) {  } 
@@ -122,6 +124,7 @@ public class employeeController extends HttpServlet {
                 con.close();
             } catch (Exception e) {
                 e.printStackTrace();
+                response.getWriter().println(e.getMessage());
             }finally{
                 if (con != null) {
                     try { con.close(); } catch (Exception e) {  } 

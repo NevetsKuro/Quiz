@@ -121,6 +121,7 @@ public class SaveAndFinishController extends HttpServlet {
             } 
         } catch (SQLException e) {
             e.printStackTrace();
+            response.getWriter().println(e.getMessage());
         }finally{
             if (con != null) {
                 try { con.close(); } catch (Exception e) {  } 

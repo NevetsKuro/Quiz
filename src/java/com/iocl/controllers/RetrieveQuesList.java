@@ -52,6 +52,7 @@ public class RetrieveQuesList extends HttpServlet {
         } 
         catch (Exception e) {
             e.printStackTrace();
+            response.getWriter().println(e.getMessage());
         }finally{
             if (con != null) {
                 try { con.close(); } catch (Exception e) {  } 

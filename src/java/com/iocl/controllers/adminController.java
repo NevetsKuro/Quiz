@@ -54,6 +54,7 @@ public class adminController extends HttpServlet {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
+            response.getWriter().println(ex.getMessage());
         }finally{
             if (con != null) {
                 try { con.close(); } catch (Exception e) {  } 

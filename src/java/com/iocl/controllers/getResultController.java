@@ -61,6 +61,7 @@ public class getResultController extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
+            resp.getWriter().println(e.getMessage());
         }finally{
             if (con != null) {
                 try { con.close(); } catch (Exception e) {  } 

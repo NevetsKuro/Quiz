@@ -6,6 +6,7 @@
 
 package com.iocl.controllers;
 
+import com.google.gson.Gson;
 import com.iocl.quiz.DatabaseConnectionFactory;
 import globals.User;
 import java.io.IOException;
@@ -53,8 +54,10 @@ public class FeedbackController extends HttpServlet {
             st=con.createStatement();
             st.executeUpdate(query);
             con.close();
+            new Gson().toJson("success", response.getWriter());
         } catch (Exception e) {
             e.printStackTrace();
+            response.getWriter().println(e.getMessage());
         }finally{
             if (con != null) {
                 try { con.close(); } catch (Exception e) {  } 

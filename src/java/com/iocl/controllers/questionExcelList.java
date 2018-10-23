@@ -108,6 +108,7 @@ public class questionExcelList extends HttpServlet {
                 con.close();
             } catch (SQLException e ) {
                 e.printStackTrace();
+                response.getWriter().println(e.getMessage());
             }finally{
                 if (con != null) {
                     
