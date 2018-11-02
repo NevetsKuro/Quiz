@@ -33,7 +33,7 @@
     <link href="resources/css/shepherd-theme-arrows.css" rel="stylesheet" type="text/css"/>
     <link href="resources/css/pure-css.css" rel="stylesheet" type="text/css"/>
     
-    <script src="resources/js/jquery-2.2.3.js" type="text/javascript"></script>
+    <script src="resources/js/jquery-2.2.3.min.js" type="text/javascript"></script>
     <script src="resources/js/easytimer.js" type="text/javascript"></script>
     <!--<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>-->
     <script src="resources/js/sweetalert.min.js" type="text/javascript"></script>
