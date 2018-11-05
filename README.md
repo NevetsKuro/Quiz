@@ -11,37 +11,26 @@ Features:
 5. Smooth transition
 
 <h3>Admin Pages:</h3>
-<p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/Admin1.PNG" width="850" title="admin">
-</p>
+<br>
 <p>&nbsp;&nbsp;&nbsp;&nbsp; - Admin Menu </p>
 <p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/Admin2.PNG" width="850" title="admin">
+  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/CustomQuiz1.PNG" width="850" title="admin">
 </p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; - Change masters(Common elements) of the quiz.</p>
-<p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/Admin3.PNG" width="850" title="admin">
-</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; - Uploading excel file on to the server.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; - There even a page for giving Rights to an employees(ADMIN/USER)</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; 
+There are also more features in admin example upload questions using excel, giving admin rights to users, controlling of master objects(e.g. Quiz Name, configurations, timings, etc etc), Resetting user Quiz Result, and Displaying Result</p>
+
 <h3>User Pages</h3>
-<p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/User2.PNG" width="850" title="user">
-</p>
+<br>
 <p>&nbsp;&nbsp;&nbsp;&nbsp; - Instructions about the quiz.</p>
 <p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/User3.PNG" width="850" title="user">
-</p>
-<p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/User4.PNG" width="850" title="user">
+  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/CustomQuiz.PNG" width="850" title="user">
 </p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp; - Quiz 's Screenshot</p>
 <p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/User5.PNG" width="850" title="user">
+  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/CustomQuiz2.PNG" width="850" title="user">
 </p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;  - Successfully Given the Test Page</p>
-<p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/User6.PNG" width="850" title="user">
-</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; - Maintenance Page</p>
 
+<p>&nbsp;&nbsp;&nbsp;&nbsp; 
+The Users are displayed with instructions site at first. Once the quiz commences A Button displayed below the bullet points for giving the Quiz. The user is provide with feature to navigate to any question in the list. He can also keep a bookmark if any question are not attempted. The question numbers marked with green are answered while other( grey) are the question which are not attempted.
+</p>
+<b>ThankYou</b>
