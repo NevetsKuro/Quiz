@@ -14,7 +14,7 @@ Features:
 <br>
 <p>&nbsp;&nbsp;&nbsp;&nbsp; - Admin Menu </p>
 <p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/CustomQuiz1.PNG" width="850" title="admin">
+  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/CustomQuiz1.JPG" width="850" title="admin">
 </p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp; 
 There are also more features in admin example upload questions using excel, giving admin rights to users, controlling of master objects(e.g. Quiz Name, configurations, timings, etc etc), Resetting user Quiz Result, and Displaying Result</p>
@@ -22,12 +22,12 @@ There are also more features in admin example upload questions using excel, givi
 <h3>User Pages</h3>
 <br>
 <p>&nbsp;&nbsp;&nbsp;&nbsp; - Instructions about the quiz.</p>
-<p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/CustomQuiz.PNG" width="850" title="user">
+<p align="center">s
+  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/CustomQuiz.JPG" width="850" title="user">
 </p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp; - Quiz 's Screenshot</p>
 <p align="center">
-  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/CustomQuiz2.PNG" width="850" title="user">
+  <img src="https://github.com/stark1996/Quiz/blob/master/web/resources/images/CustomQuiz2.JPG" width="850" title="user">
 </p>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp; 
